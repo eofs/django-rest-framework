@@ -943,11 +943,9 @@ class FileField(WritableField):
 
         return data
 
-    def to_native(self, value):
-        """
-        No need to return anything, the file can be accessed form its url.
-        """
-        return
+    def field_to_native(self, obj, field_name):
+        field = getattr(obj, field_name)
+        return field.url
 
 
 class ImageField(FileField):
